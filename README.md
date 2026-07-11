@@ -68,7 +68,7 @@ A dual-mode (Auto/Manual) intelligent fan control system based on STM32F103C8T6.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/Smart-Temperature-Controlled-Fan-STM32.git
+   git clone https://github.com/zou-zhiwei/Smart-Temperature-Controlled-Fan-STM32.git
 2.Open the project with Keil MDK (or your preferred IDE).
 
 3.Compile and flash the firmware to STM32F103C8T6.
