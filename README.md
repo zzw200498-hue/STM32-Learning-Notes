@@ -38,21 +38,29 @@ A dual-mode (Auto/Manual) intelligent fan control system based on STM32F103C8T6.
 
 ---
 
-## 🔌 Pin Mapping (Customizable)
+## 🔌 Pin Mapping (Default Configuration)
 
-| Peripheral | Pin | Function |
-| :--- | :--- | :--- |
-| Motor PWM | PAx (e.g., PA0/PA1) | PWM output for speed control |
-| ADC (Temp) | PAx (e.g., PA1) | Analog voltage reading |
-| Encoder CLK | PA0 | Encoder phase A |
-| Encoder DT | PA1 | Encoder phase B |
-| Buzzer | PB12 | Timer2 interrupt driven |
-| Red LED | PA8 | Alarm indicator |
-| Green LED | PA9 | Safe indicator |
-| OLED SCL | PB6 | I2C Clock |
-| OLED SDA | PB7 | I2C Data |
+> **⚠️ 重要提示**：以下引脚分配为推荐配置，请根据您的实际硬件接线修改对应的头文件（`Motor.h`、`Encoder.h`、`AD.h`、`OLED.h`）中的宏定义。
 
-> **Note**: Actual pins depend on your `Motor.h`, `Encoder.h`, `AD.h`, and `OLED.h` definitions. Adjust according to your wiring.
+| Peripheral        | Pin   | Function                          | Note                         |
+| :---------------- | :---- | :-------------------------------- | :--------------------------- |
+| **Motor PWM**     | PA2   | PWM output (TIM2_CH3)             | 使用 TIM2 的 CH3 输出       |
+| **ADC (Temp)**    | PA4   | Analog voltage reading            | ADC1 的通道 4               |
+| **Encoder CLK**   | PA0   | Encoder phase A (TIM2_CH1)        | 与 PWM 共用 TIM2，无冲突    |
+| **Encoder DT**    | PA1   | Encoder phase B (TIM2_CH2)        | 与 PWM 共用 TIM2，无冲突    |
+| **Buzzer**        | PB12  | Timer2 interrupt driven           | 无源蜂鸣器，定时器翻转      |
+| **Red LED**       | PA8   | Alarm indicator (high temp)       | 高电平点亮                  |
+| **Green LED**     | PA9   | Safe indicator (normal temp)      | 高电平点亮                  |
+| **OLED SCL**      | PB6   | I2C Clock                         | 硬件 I2C1 或软件模拟        |
+| **OLED SDA**      | PB7   | I2C Data                          | 硬件 I2C1 或软件模拟        |
+
+>  **Note**: The pin mapping above is a **recommended default**. If your hardware uses different pins, please modify the corresponding macro definitions in:
+> - `Motor.h` – for PWM output pin and timer channel
+> - `Encoder.h` – for encoder CLK/DT pins
+> - `AD.h` – for ADC channel pin
+> - `OLED.h` – for I2C SCL/SDA pins (if using software I2C)
+>
+> Always double-check for pin conflicts (e.g., do not use the same pin for two different peripherals).
 
 ---
 
