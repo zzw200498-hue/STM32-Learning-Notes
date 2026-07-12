@@ -51,8 +51,8 @@ A dual-mode (Auto/Manual) intelligent fan control system based on STM32F103C8T6.
 | **Buzzer**        | PB12  | Timer2 interrupt driven           | 无源蜂鸣器，定时器翻转      |
 | **Red LED**       | PA8   | Alarm indicator (high temp)       | 高电平点亮                  |
 | **Green LED**     | PA9   | Safe indicator (normal temp)      | 高电平点亮                  |
-| **OLED SCL**      | PB6   | I2C Clock                         | 硬件 I2C1 或软件模拟        |
-| **OLED SDA**      | PB7   | I2C Data                          | 硬件 I2C1 或软件模拟        |
+| **OLED SCL**      | PB6   | I2C Clock                         | 硬件 I2C 或软件模拟        |
+| **OLED SDA**      | PB7   | I2C Data                          | 硬件 I2C 或软件模拟        |
 
 >  **Note**: The pin mapping above is a **recommended default**. If your hardware uses different pins, please modify the corresponding macro definitions in:
 > - `Motor.h` – for PWM output pin and timer channel
